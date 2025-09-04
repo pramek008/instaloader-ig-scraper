@@ -63,24 +63,24 @@ class InstagramService:
 
     def get_post_data_from_post(self, post) -> PostData:
         """Convert Instaloader Post object to PostData"""
-        for attr in dir(post):
-            if not attr.startswith("_"):  # skip private/internal
-                try:
-                    value = getattr(post, attr)
-                    if isinstance(value, object) and not isinstance(value, (str, int, float, bool)):
-                        for sub_attr in dir(value):
-                            if not sub_attr.startswith("_"):  # skip private/internal
-                                try:
-                                    sub_value = getattr(value, sub_attr)
-                                    logger.info(f"{attr}.{sub_attr}: {sub_value}")
+        # for attr in dir(post):
+        #     if not attr.startswith("_"):  # skip private/internal
+        #         try:
+        #             value = getattr(post, attr)
+        #             if isinstance(value, object) and not isinstance(value, (str, int, float, bool)):
+        #                 for sub_attr in dir(value):
+        #                     if not sub_attr.startswith("_"):  # skip private/internal
+        #                         try:
+        #                             sub_value = getattr(value, sub_attr)
+        #                             logger.info(f"{attr}.{sub_attr}: {sub_value}")
                                     
-                                except Exception as e:
-                                    logger.warning(f"{attr}.{sub_attr}: <error {e}>")
-                    else:
-                        logger.info(f"{attr}: {value}")
+        #                         except Exception as e:
+        #                             logger.warning(f"{attr}.{sub_attr}: <error {e}>")
+        #             else:
+        #                 logger.info(f"{attr}: {value}")
                         
-                except Exception as e:
-                    logger.warning(f"{attr}: <error {e}>")
+        #         except Exception as e:
+        #             logger.warning(f"{attr}: <error {e}>")
 
         try:
             media_urls = []                            
